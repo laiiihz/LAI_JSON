@@ -24,11 +24,31 @@ static int lai_paese_null(std::string &context,lai_value* value){
     return LAI_PARSE_OK;
 }
 
+int lai_parse_true(std::string &context, lai_value *value) {
+    EXPECT(context,'t');
+    if(context[0]!='r'||context[1]!='u'||context[2]!='e') return LAI_PARSE_INVALID_VALUE;
+    context=context.substr(3,context.length()-1);
+    value->type=LAI_TRUE;
+    return LAI_PARSE_OK;
+}
+
+
+int lai_parse_false(std::string &context, lai_value *value) {
+    EXPECT(context,'f');
+    if(context[0]!='a'||context[1]!='l'||context[2]!='s'||context[3]!='e')
+        return LAI_PARSE_INVALID_VALUE;
+    context=context.substr(4,context.length()-1);
+    value->type=LAI_FALSE;
+    return LAI_PARSE_OK;
+}
+
 static int lai_parse_value(std::string &context,lai_value* value){
     switch (context[0]){
         case 'n':return lai_paese_null(context,value);
+        case 't':return lai_parse_true(context,value);
+        case 'f':return lai_parse_false(context,value);
         case '\0':return LAI_PARSE_EXPECT_VALUE;
-        default:LAI_PARSE_INVALID_VALUE;
+        default:return LAI_PARSE_INVALID_VALUE;
     }
 }
 
@@ -38,3 +58,11 @@ int lai_parse(lai_value* value,std::string &context){
     lai_parse_whitespace(context);
     return lai_parse_value(context,value);
 }
+
+lai_type lai_get_type(const lai_value* value){
+    assert(value!= nullptr);
+    return value->type;
+}
+
+
+
