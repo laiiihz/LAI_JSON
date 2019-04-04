@@ -13,9 +13,9 @@
 * using googletest
 
 ### Guide
-[GoogleTest_installation](https://github.com/laiiihz/LAI_JSON/docs/gtest_installation.md)
+[GoogleTest_installation](https://github.com/laiiihz/LAI_JSON/blob/master/docs/gtest_installation.md)
 
-[GoogleTest_installation(zh_cn)](https://github.com/laiiihz/LAI_JSON/docs/gtest_installation_zh_cn.md)
+[GoogleTest_installation(zh_cn)](https://github.com/laiiihz/LAI_JSON/blob/master/docs/gtest_installation_zh_cn.md)
 
 ```bash
 cd LAI_JSON
