@@ -31,7 +31,7 @@ int lai_parse(lai_value* value, std::string &json);
 static int lai_parse_value(std::string &context,lai_value* value);
 static void lai_parse_whitespace(std::string &context);
 
-static int lai_paese_null(std::string &context,lai_value* value);
+static int lai_parse_null(std::string &context,lai_value* value);
 static int lai_parse_true(std::string &context,lai_value* value);
 static int lai_parse_false(std::string &context,lai_value* value);
 
