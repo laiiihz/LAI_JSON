@@ -4,11 +4,10 @@
 
 #include "laihzjson.h"
 #include <cassert>
-#define EXPECT(context,ch) \
-do{\
-    assert(context[0]==ch);\
-    context=context.substr(1,context.length()-1);\
-}while(0)
+inline void EXPECT(std::string &context,char ch){
+    assert(context[0]==ch);
+    context=context.substr(1,context.length()-1);
+}
 
 static void lai_parse_whitespace(std::string &context){
     while (context[0]==' '|| context[0]=='\t' || context[0]=='\n' || context[0]=='\r'){
