@@ -4,6 +4,7 @@
 
 #include "laihzjson.h"
 #include <cassert>
+#include <sstream>
 inline void EXPECT(std::string &context,char ch){
     assert(context[0]==ch);
     context=context.substr(1,context.length()-1);
@@ -49,6 +50,18 @@ static int lai_parse_value(std::string &context,lai_value* value){
         case '\0':return LAI_PARSE_EXPECT_VALUE;
         default:return LAI_PARSE_INVALID_VALUE;
     }
+}
+
+static int lai_parse_number(std::string &context,lai_value* value){
+    /*TODO validate numbers*/
+    std::string extraString;
+    std::istringstream stringStream(context);
+    stringStream >> value->num>>extraString;
+    if(context==extraString)
+        return LAI_PARSE_INVALID_VALUE;
+    context=extraString;
+    value->type=LAI_NUMBER;
+    return LAI_PARSE_OK;
 }
 
 int lai_parse(lai_value* value,std::string &context){

@@ -35,6 +35,7 @@ static void lai_parse_whitespace(std::string &context);
 static int lai_parse_null(std::string &context,lai_value* value);
 static int lai_parse_true(std::string &context,lai_value* value);
 static int lai_parse_false(std::string &context,lai_value* value);
+static int lai_parse_number(std::string &context,lai_value* value);
 
 lai_type lai_get_type(const lai_value* value);
 double lai_get_number(const lai_value* value);
