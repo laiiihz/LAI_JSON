@@ -69,5 +69,9 @@ lai_type lai_get_type(const lai_value* value){
     return value->type;
 }
 
+double lai_get_number(const lai_value* value){
+    assert(value!= nullptr && value->type==LAI_NUMBER);
+    return value->num;
+}
 
 

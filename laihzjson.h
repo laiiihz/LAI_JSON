@@ -17,6 +17,7 @@ typedef  enum {
 }lai_type;
 
 typedef struct {
+    double num;
     lai_type type;
 }lai_value;
 
@@ -36,5 +37,5 @@ static int lai_parse_true(std::string &context,lai_value* value);
 static int lai_parse_false(std::string &context,lai_value* value);
 
 lai_type lai_get_type(const lai_value* value);
-
+double lai_get_number(const lai_value* value);
 #endif //LAI_JSON_LAIHZJSON_H
